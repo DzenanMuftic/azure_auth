@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}User Profile - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header">
+                <h4>User Profile</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <div class="mb-3">
+                            <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                                <span class="text-white fs-1">{{ user.name[0] if user.name else '?' }}</span>
+                            </div>
+                        </div>
+                        <h5>{{ user.name }}</h5>
+                        <p class="text-muted">{{ user.email }}</p>
+                    </div>
+                    
+                    <div class="col-md-8">
+                        <h6>Profile Details</h6>
+                        <table class="table">
+                            <tr>
+                                <td><strong>Display Name:</strong></td>
+                                <td>{{ user.name }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Email Address:</strong></td>
+                                <td>{{ user.email }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>User ID:</strong></td>
+                                <td><code>{{ user.id }}</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Authentication Status:</strong></td>
+                                <td><span class="badge bg-success">Active</span></td>
+                            </tr>
+                        </table>
+                        
+                        <div class="mt-4">
+                            <a href="{{ url_for('index') }}" class="btn btn-primary">Back to Dashboard</a>
+                            <a href="{{ url_for('logout') }}" class="btn btn-outline-danger">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
